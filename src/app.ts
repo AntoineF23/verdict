@@ -583,6 +583,7 @@ function openSettings() {
   state._draft = {
     llm: state.llm ? { ...state.llm } : { provider: "anthropic", model: PRESETS.anthropic.defaultModel, apiKey: "", baseUrl: "" },
     anon: { enabled: state.anon.enabled, heuristicNames: state.anon.heuristicNames, termList: [...state.anon.termList], allowList: [...state.anon.allowList] },
+    rememberKey: !!(state.llm && state.llm.apiKey), // a persisted key implies "remember" was on
   };
   document.getElementById("settings").classList.remove("hidden");
   renderSettings();
@@ -603,12 +604,14 @@ function renderSettings() {
     Object.keys(PRESETS).map(p => `<option value="${p}" ${p === d.llm.provider ? "selected" : ""}>${esc(PRESETS[p].label || p)}</option>`).join("") + `</select></div>`;
   html += `<div class="form-row"><label>Model</label>${modelField}</div>`;
   if (d.llm.provider === "custom") html += `<div class="form-row"><label>Base URL</label><input type="text" id="setBaseUrl" value="${esc(d.llm.baseUrl || "")}" placeholder="https://…/v1" /></div>`;
-  html += `<div class="form-row"><label>API key</label><input type="password" id="setKey" value="${esc(d.llm.apiKey || "")}" placeholder="sk-… / paste key" /></div>`;
+  html += `<div class="form-row"><label>API key</label><input type="password" id="setKey" value="${esc(d.llm.apiKey || "")}" placeholder="paste your key" autocomplete="off" /></div>`;
+  html += `<label class="chk"><input type="checkbox" id="setRemember" ${d.rememberKey ? "checked" : ""}/> Remember the key in this browser (leave off on shared computers)</label>`;
+  html += `<p style="font-size:12px;color:var(--muted);margin:4px 0 8px">Your key stays in your browser and is sent only to the provider you choose. With this off, it is kept for this session only and never saved to disk.</p>`;
   html += `<div class="form-row"><label>Max output tokens</label><input type="text" id="setMaxTokens" value="${d.llm.maxTokens ?? ""}" placeholder="4096" /></div>`;
-  html += `<p style="font-size:12px;color:var(--muted);margin:-2px 0 8px">Raise this if a thinking/gateway model complains that max_tokens must exceed its thinking budget.</p>`;
+  html += `<p style="font-size:12px;color:var(--muted);margin:-2px 0 8px">Raise this if a thinking or gateway model reports that max_tokens must exceed its thinking budget.</p>`;
 
   html += `<h3>Anonymization</h3>`;
-  html += `<label class="chk"><input type="checkbox" id="setAnonEnabled" ${d.anon.enabled ? "checked" : ""} /> Enable — redact PII in the timeline, exports, and everything sent to an LLM</label>`;
+  html += `<label class="chk"><input type="checkbox" id="setAnonEnabled" ${d.anon.enabled ? "checked" : ""} /> Turn on anonymization. Personal data (names, emails, phone numbers, and more) is replaced with placeholders everywhere it appears: the conversation timeline, your exports, and anything sent to an LLM.</label>`;
   html += `<label class="chk"><input type="checkbox" id="setHeuristic" ${d.anon.heuristicNames ? "checked" : ""} /> Also flag capitalized words that look like names/orgs (dictionary-filtered heuristic)</label>`;
   html += `<div class="form-row col"><label>Always redact these terms (one per line — names, companies, codenames)</label><textarea id="setTerms" class="mono-area" style="min-height:80px">${esc(d.anon.termList.join("\n"))}</textarea></div>`;
   html += `<div class="form-row col"><label>Never redact these (allow-list, one per line)</label><textarea id="setAllow" class="mono-area" style="min-height:60px">${esc(d.anon.allowList.join("\n"))}</textarea></div>`;
@@ -624,6 +627,7 @@ function renderSettings() {
   q("setModel").addEventListener("input", e => { d.llm.model = e.target.value; });
   q("setBaseUrl")?.addEventListener("input", e => { d.llm.baseUrl = e.target.value; });
   q("setKey").addEventListener("input", e => { d.llm.apiKey = e.target.value; });
+  q("setRemember").addEventListener("change", e => { d.rememberKey = e.target.checked; });
   q("setMaxTokens").addEventListener("input", e => { const n = parseInt(e.target.value, 10); d.llm.maxTokens = Number.isFinite(n) && n > 0 ? n : undefined; });
   q("setAnonEnabled").addEventListener("change", e => { d.anon.enabled = e.target.checked; });
   q("setHeuristic").addEventListener("change", e => { d.anon.heuristicNames = e.target.checked; });
@@ -666,9 +670,11 @@ function scanNames() {
 
 function saveSettings() {
   const d = state._draft;
-  state.llm = { ...d.llm };
+  state.llm = { ...d.llm }; // key kept in memory for this session regardless
+  // Persist the key to localStorage only when the reviewer opts in; otherwise
+  // remember everything except the key (session-only key = safer on shared/hosted use).
+  saveLlmConfig(d.rememberKey ? state.llm : { ...state.llm, apiKey: "" });
   state.anon = { ...d.anon };
-  saveLlm();
   saveAnon();
   invalidateView();
   if (state.currentId) { renderDetail(currentConv()); }

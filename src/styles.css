@@ -45,7 +45,7 @@
   }
   button:hover { background: var(--panel-2); }
   button:active { transform: translateY(1px); }
-  input[type=text], textarea {
+  input[type=text], input[type=password], input[type=number], input[type=email], input[type=search], textarea {
     font: inherit;
     color: var(--text);
     background: var(--panel);
@@ -53,7 +53,10 @@
     border-radius: var(--radius);
     padding: 7px 9px;
   }
-  input[type=text]:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+  input[type=text]:focus, input[type=password]:focus, input[type=number]:focus, input[type=email]:focus, input[type=search]:focus, textarea:focus {
+    outline: 2px solid var(--accent); outline-offset: -1px;
+  }
+  input::placeholder, textarea::placeholder { color: var(--muted); }
 
   /* Header */
   header {

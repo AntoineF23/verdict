@@ -1,5 +1,10 @@
 # Verdict
 
+[![CI](https://github.com/AntoineF23/verdict/actions/workflows/ci.yml/badge.svg)](https://github.com/AntoineF23/verdict/actions/workflows/ci.yml)
+[![Live demo](https://img.shields.io/badge/live%20demo-online-3E5641)](https://antoinef23.github.io/verdict/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-004D61)](LICENSE)
+[![Built with Vite + TypeScript](https://img.shields.io/badge/built%20with-Vite%20%2B%20TypeScript-822659)](https://vitejs.dev/)
+
 **Verdict is a local, open source tool for evaluating AI features.** Load the traces from any AI
 agent, chatbot, RAG assistant, or LLM feature. Review each conversation and mark it **Pass or
 Fail** with a comment. Discover *what kinds* of failures happen with grounded theory error
@@ -270,9 +275,15 @@ the top of `src/parser.ts`.
 
 * **Settings, LLM connection.** Choose a provider (Anthropic with the latest Claude by default,
   OpenAI, or any OpenAI compatible base URL including a gateway or local model), a model, a key, and
-  a max output tokens value. Security: the key is stored in your browser's local storage, which is
-  fine for a reviewer running locally with their own key. Do not host this publicly with a shared
-  key.
+  a max output tokens value.
+
+  **Is your key safe on the hosted demo?** Yes. Verdict has no backend. Your key is held in your
+  browser and is sent only to the provider you configure, directly over HTTPS. Nothing is collected
+  by this project or any server we run. By default the key is kept for the current session only. If
+  you tick "Remember the key in this browser" it is saved to this origin's local storage so you do
+  not retype it. Local storage is not encrypted, so leave that box unchecked on shared computers,
+  and never host a copy of this app with a shared key baked in. If you prefer full isolation,
+  download `dist/index.html` and run it offline instead of using the hosted demo.
 * **Anonymization.** Redact PII with consistent placeholder tokens everywhere, including LLM
   payloads. Offline rules plus a dictionary filtered capitalized word name and company heuristic
   plus your own term and allow lists, with a "scan dataset for names" helper.
