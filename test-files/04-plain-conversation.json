@@ -1,0 +1,44 @@
+[
+  {
+    "role": "system",
+    "content": "You are a helpful general-purpose assistant. Use tools when they improve accuracy. Be concise."
+  },
+  {
+    "role": "user",
+    "content": "What's 15% of 2,480, then add 90?"
+  },
+  {
+    "role": "assistant",
+    "content": "Computing that.",
+    "tool_calls": [
+      {
+        "function": {
+          "name": "calculator",
+          "arguments": "{\"expression\":\"2480*0.15\"}"
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "calculator",
+    "content": "{\"value\":372}"
+  },
+  {
+    "role": "assistant",
+    "content": "15% of 2,480 is 372; plus 90 is 462.",
+    "tool_calls": [
+      {
+        "function": {
+          "name": "calculator",
+          "arguments": "{\"expression\":\"372+90\"}"
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "calculator",
+    "content": "{\"value\":462}"
+  }
+]

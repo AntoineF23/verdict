@@ -1,0 +1,13 @@
+[
+  { "role": "system", "content": "You are a support agent." },
+  { "role": "user", "content": "My order hasn't arrived." },
+  {
+    "role": "assistant",
+    "content": "Let me check your order status.",
+    "tool_calls": [
+      { "function": { "name": "lookup_order", "arguments": "{\"user\":\"u_123\"}" } }
+    ]
+  },
+  { "role": "tool", "name": "lookup_order", "content": "{\"status\":\"in_transit\",\"eta\":\"tomorrow\"}" },
+  { "role": "assistant", "content": "Good news — your order is in transit and should arrive tomorrow." }
+]

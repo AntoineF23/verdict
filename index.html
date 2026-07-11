@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Verdict</title>
+</head>
+<body>
+<header>
+  <div class="brand">Verdict</div>
+  <button id="loadBtn"><span class="lbl">Load export</span></button>
+  <button id="importBtn" title="Merge a previously exported feedback JSON"><span class="lbl">Import feedback</span></button>
+  <div class="banner" id="banner">No data loaded</div>
+  <div class="spacer"></div>
+  <button id="anonBtn" title="Redact PII in the timeline, exports, and LLM payloads"><span class="lbl">Anonymize</span></button>
+  <button id="analyzeBtn" title="Cluster error codes into categories (open → axial coding)"><span class="lbl">Analyze fails</span></button>
+  <button id="judgesBtn" title="LLM-as-judge per failure category — validate vs human labels, then export"><span class="lbl">Judges</span></button>
+  <button id="exportCsv"><span class="lbl">Export CSV</span></button>
+  <button id="exportJson"><span class="lbl">Export JSON</span></button>
+  <button id="settingsBtn" title="Settings — API key & anonymization"></button>
+  <input type="file" id="fileInput" accept=".json,.ndjson,application/json,text/plain" class="hidden" />
+  <input type="file" id="fbInput" accept=".json,application/json" class="hidden" />
+</header>
+
+<main>
+  <aside class="queue">
+    <div class="queue-head">
+      <div class="progress">
+        <span><b id="revCount">0</b> / <b id="totalCount">0</b> reviewed</span>
+        <span><b id="passCount">0</b> pass</span>
+        <span><b id="failCount">0</b> fail</span>
+      </div>
+      <div class="filters" id="filters">
+        <button data-f="all" class="active">All</button>
+        <button data-f="unreviewed">Unreviewed</button>
+        <button data-f="pass">Pass</button>
+        <button data-f="fail">Fail</button>
+      </div>
+    </div>
+    <div id="catFilterNote"></div>
+    <div class="queue-list" id="queueList"></div>
+  </aside>
+
+  <section class="detail">
+    <div class="detail-head" id="detailHead"></div>
+    <div class="timeline" id="timeline">
+      <div class="empty" id="emptyState">
+        <h2>Load an OpenTelemetry trace export to begin</h2>
+        <p>Click <b>Load export…</b> or drag a <code>.json</code> / <code>.ndjson</code> file anywhere onto this window.</p>
+        <p style="font-size:13px">Works with OTLP exports, OpenInference / gen_ai spans, Langfuse exports,
+        or plain <code>[{role, content}]</code> conversations — and falls back to readable JSON for anything else.</p>
+        <p style="font-size:12px;color:var(--muted)">
+          Shortcuts once loaded: <span class="kbd">j</span>/<span class="kbd">k</span> navigate ·
+          <span class="kbd">p</span> pass · <span class="kbd">f</span> fail ·
+          <span class="kbd">/</span> comment · <span class="kbd">c</span> code · <span class="kbd">⌘/Ctrl+↵</span> save &amp; next
+        </p>
+      </div>
+    </div>
+    <div class="feedback hidden" id="feedback">
+      <div class="fb-main">
+        <div class="verdict-btns">
+          <button class="pass" id="btnPass">Pass</button>
+          <button class="fail" id="btnFail">Fail</button>
+        </div>
+        <textarea id="comment" placeholder="Comment — what did the agent do well or badly? (autosaves)"></textarea>
+        <div class="savenote" id="saveNote"></div>
+      </div>
+      <div class="fb-codes hidden" id="fbCodes">
+        <label>Error codes</label>
+        <div class="chips" id="codeChips"></div>
+        <input type="text" id="codeInput" list="codeSuggestions" placeholder="open code — type & press Enter (e.g. hallucinated data)" />
+        <datalist id="codeSuggestions"></datalist>
+        <label class="chk" title="I captured every failure category present — makes this a trustworthy negative for judge evaluation"><input type="checkbox" id="fullyCoded" /> fully coded</label>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="analysis" class="modal hidden">
+  <div class="modal-card">
+    <div class="modal-head">
+      <h2>Error analysis — open → axial coding</h2>
+      <button id="closeAnalysis"></button>
+    </div>
+    <div class="modal-body" id="analysisBody"></div>
+  </div>
+</div>
+
+<div id="settings" class="modal hidden">
+  <div class="modal-card">
+    <div class="modal-head">
+      <h2>Settings</h2>
+      <button id="closeSettings"></button>
+    </div>
+    <div class="modal-body" id="settingsBody"></div>
+  </div>
+</div>
+
+<div id="judges" class="modal hidden">
+  <div class="modal-card modal-wide">
+    <div class="modal-head">
+      <h2>LLM-as-judge — validate per category, then export</h2>
+      <button id="closeJudges"></button>
+    </div>
+    <div class="modal-body" id="judgesBody"></div>
+  </div>
+</div>
+
+<div id="drop">Drop trace export to load</div>
+
+<script type="module" src="/src/app.ts"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+[
+  { "id": "rec-1", "some_field": "value", "nested": { "a": 1, "b": [2, 3] }, "note": "totally custom shape" },
+  { "id": "rec-2", "events": [
+    { "role": "user", "content": "Does the fallback still let me grade this?" },
+    { "role": "assistant", "content": "Yes — recognized messages inside an unknown record are still rendered." }
+  ] }
+]

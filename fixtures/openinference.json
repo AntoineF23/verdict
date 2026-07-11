@@ -1,0 +1,51 @@
+[
+  {
+    "trace_id": "trace-bbb",
+    "span_id": "oi1",
+    "name": "LLM",
+    "startTimeUnixNano": "1000",
+    "endTimeUnixNano": "2000",
+    "attributes": {
+      "openinference.span.kind": "LLM",
+      "llm.model_name": "claude-opus-4-8",
+      "llm.input_messages.0.message.role": "system",
+      "llm.input_messages.0.message.content": "You are a coding assistant.",
+      "llm.input_messages.1.message.role": "user",
+      "llm.input_messages.1.message.content": "List the files in the repo.",
+      "llm.output_messages.0.message.role": "assistant",
+      "llm.output_messages.0.message.content": "I'll list them.",
+      "llm.output_messages.0.message.tool_calls.0.tool_call.function.name": "list_files",
+      "llm.output_messages.0.message.tool_calls.0.tool_call.function.arguments": "{\"path\":\".\"}",
+      "llm.token_count.prompt": 30,
+      "llm.token_count.completion": 6
+    }
+  },
+  {
+    "trace_id": "trace-bbb",
+    "span_id": "oi2",
+    "name": "list_files",
+    "startTimeUnixNano": "2000",
+    "endTimeUnixNano": "2500",
+    "attributes": {
+      "openinference.span.kind": "TOOL",
+      "tool.name": "list_files",
+      "input.value": "{\"path\":\".\"}",
+      "output.value": "[\"README.md\",\"grader.html\",\"fixtures\"]"
+    }
+  },
+  {
+    "trace_id": "trace-ccc",
+    "span_id": "oi3",
+    "name": "LLM",
+    "startTimeUnixNano": "1000",
+    "endTimeUnixNano": "2000",
+    "attributes": {
+      "openinference.span.kind": "LLM",
+      "llm.model_name": "claude-opus-4-8",
+      "llm.input_messages.0.message.role": "user",
+      "llm.input_messages.0.message.content": "Say hello.",
+      "llm.output_messages.0.message.role": "assistant",
+      "llm.output_messages.0.message.content": "Hello! How can I help?"
+    }
+  }
+]

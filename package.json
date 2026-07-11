@@ -1,0 +1,28 @@
+{
+  "name": "verdict",
+  "version": "0.1.0",
+  "description": "Verdict — local-first tool for human Pass/Fail + comment feedback on AI agent traces (OpenTelemetry / OpenInference / Langfuse / plain conversations), with grounded-theory open → axial error coding and validated LLM-as-judge export. Offline, no backend.",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "gen:fixtures": "node scripts/generate-fixtures.mjs",
+    "gen:testfiles": "node scripts/generate-test-files.mjs"
+  },
+  "devDependencies": {
+    "@fontsource/ubuntu": "^5.2.8",
+    "@fontsource/ubuntu-mono": "^5.2.8",
+    "@types/node": "^22.10.2",
+    "jsdom": "^29.1.1",
+    "lucide-static": "^1.24.0",
+    "typescript": "^5.6.3",
+    "vite": "^6.0.7",
+    "vite-plugin-singlefile": "^2.1.0",
+    "vitest": "^2.1.8"
+  }
+}

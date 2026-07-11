@@ -1,0 +1,997 @@
+{
+  "feedback": [
+    {
+      "conversation_id": "conv-001",
+      "verdict": "fail",
+      "comment": "Gave an oddly precise figure with no tool call or source — fabricated.",
+      "codes": [
+        "hallucinated figure"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:00:00.000Z",
+      "model": "claude-opus-4-8"
+    },
+    {
+      "conversation_id": "conv-002",
+      "verdict": "fail",
+      "comment": "Gave an oddly precise figure with no tool call or source — fabricated.",
+      "codes": [
+        "hallucinated figure"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:01:00.000Z",
+      "model": "gpt-4o"
+    },
+    {
+      "conversation_id": "conv-003",
+      "verdict": "fail",
+      "comment": "Gave an oddly precise figure with no tool call or source — fabricated.",
+      "codes": [
+        "hallucinated figure"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:02:00.000Z",
+      "model": "claude-sonnet-5"
+    },
+    {
+      "conversation_id": "conv-004",
+      "verdict": "fail",
+      "comment": "Gave an oddly precise figure with no tool call or source — fabricated.",
+      "codes": [
+        "hallucinated figure"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:03:00.000Z",
+      "model": "gemini-1.5-pro"
+    },
+    {
+      "conversation_id": "conv-005",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:04:00.000Z",
+      "model": "claude-opus-4-8"
+    },
+    {
+      "conversation_id": "conv-006",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:05:00.000Z",
+      "model": "gpt-4o"
+    },
+    {
+      "conversation_id": "conv-007",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:06:00.000Z",
+      "model": "claude-sonnet-5"
+    },
+    {
+      "conversation_id": "conv-008",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:07:00.000Z",
+      "model": "gemini-1.5-pro"
+    },
+    {
+      "conversation_id": "conv-009",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:08:00.000Z",
+      "model": "claude-opus-4-8"
+    },
+    {
+      "conversation_id": "conv-010",
+      "verdict": "fail",
+      "comment": "Cited a journal/volume that does not exist.",
+      "codes": [
+        "fake citation"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:09:00.000Z",
+      "model": "gpt-4o"
+    },
+    {
+      "conversation_id": "conv-011",
+      "verdict": "fail",
+      "comment": "Cited a journal/volume that does not exist.",
+      "codes": [
+        "fake citation"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:10:00.000Z",
+      "model": "claude-sonnet-5"
+    },
+    {
+      "conversation_id": "conv-012",
+      "verdict": "fail",
+      "comment": "Cited a journal/volume that does not exist.",
+      "codes": [
+        "fake citation"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:11:00.000Z",
+      "model": "gemini-1.5-pro"
+    },
+    {
+      "conversation_id": "conv-013",
+      "verdict": "fail",
+      "comment": "Cited a journal/volume that does not exist.",
+      "codes": [
+        "fake citation"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:12:00.000Z",
+      "model": "claude-opus-4-8"
+    },
+    {
+      "conversation_id": "conv-014",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:13:00.000Z",
+      "model": "gpt-4o"
+    },
+    {
+      "conversation_id": "conv-015",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:14:00.000Z",
+      "model": "claude-sonnet-5"
+    },
+    {
+      "conversation_id": "conv-016",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:15:00.000Z",
+      "model": "gemini-1.5-pro"
+    },
+    {
+      "conversation_id": "conv-017",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:16:00.000Z",
+      "model": "claude-opus-4-8"
+    },
+    {
+      "conversation_id": "conv-018",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:17:00.000Z",
+      "model": "gpt-4o"
+    },
+    {
+      "conversation_id": "conv-019",
+      "verdict": "fail",
+      "comment": "Reservation tool returned an error; the agent claimed success anyway.",
+      "codes": [
+        "ignored tool error"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:18:00.000Z",
+      "model": "claude-sonnet-5"
+    },
+    {
+      "conversation_id": "conv-020",
+      "verdict": "fail",
+      "comment": "Reservation tool returned an error; the agent claimed success anyway.",
+      "codes": [
+        "ignored tool error"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:19:00.000Z",
+      "model": "gemini-1.5-pro"
+    },
+    {
+      "conversation_id": "conv-021",
+      "verdict": "fail",
+      "comment": "Reservation tool returned an error; the agent claimed success anyway.",
+      "codes": [
+        "ignored tool error"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:20:00.000Z",
+      "model": "claude-opus-4-8"
+    },
+    {
+      "conversation_id": "conv-022",
+      "verdict": "fail",
+      "comment": "Reservation tool returned an error; the agent claimed success anyway.",
+      "codes": [
+        "ignored tool error"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:21:00.000Z",
+      "model": "gpt-4o"
+    },
+    {
+      "conversation_id": "conv-023",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:22:00.000Z",
+      "model": "claude-sonnet-5"
+    },
+    {
+      "conversation_id": "conv-024",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:23:00.000Z",
+      "model": "gemini-1.5-pro"
+    },
+    {
+      "conversation_id": "conv-025",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:24:00.000Z",
+      "model": "claude-opus-4-8"
+    },
+    {
+      "conversation_id": "conv-026",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:25:00.000Z",
+      "model": "gpt-4o"
+    },
+    {
+      "conversation_id": "conv-027",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:26:00.000Z",
+      "model": "claude-sonnet-5"
+    },
+    {
+      "conversation_id": "conv-028",
+      "verdict": "fail",
+      "comment": "Used the weather tool for a currency-conversion request and never answered it.",
+      "codes": [
+        "wrong tool used",
+        "answered wrong question"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:27:00.000Z",
+      "model": "gemini-1.5-pro"
+    },
+    {
+      "conversation_id": "conv-029",
+      "verdict": "fail",
+      "comment": "Used the weather tool for a currency-conversion request and never answered it.",
+      "codes": [
+        "wrong tool used"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:28:00.000Z",
+      "model": "claude-opus-4-8"
+    },
+    {
+      "conversation_id": "conv-030",
+      "verdict": "fail",
+      "comment": "Used the weather tool for a currency-conversion request and never answered it.",
+      "codes": [
+        "wrong tool used"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:29:00.000Z",
+      "model": "gpt-4o"
+    },
+    {
+      "conversation_id": "conv-031",
+      "verdict": "fail",
+      "comment": "Used the weather tool for a currency-conversion request and never answered it.",
+      "codes": [
+        "wrong tool used",
+        "answered wrong question"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:30:00.000Z",
+      "model": "claude-sonnet-5"
+    },
+    {
+      "conversation_id": "conv-032",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:31:00.000Z",
+      "model": "gemini-1.5-pro"
+    },
+    {
+      "conversation_id": "conv-033",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:32:00.000Z",
+      "model": "claude-opus-4-8"
+    },
+    {
+      "conversation_id": "conv-034",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:33:00.000Z",
+      "model": "gpt-4o"
+    },
+    {
+      "conversation_id": "conv-035",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:34:00.000Z",
+      "model": "claude-sonnet-5"
+    },
+    {
+      "conversation_id": "conv-036",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:35:00.000Z",
+      "model": "gemini-1.5-pro"
+    },
+    {
+      "conversation_id": "conv-037",
+      "verdict": "fail",
+      "comment": "Ignored the 20% discount (and did it in-head) — total is wrong.",
+      "codes": [
+        "math error"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:36:00.000Z",
+      "model": "claude-opus-4-8"
+    },
+    {
+      "conversation_id": "conv-038",
+      "verdict": "fail",
+      "comment": "Ignored the 20% discount (and did it in-head) — total is wrong.",
+      "codes": [
+        "math error"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:37:00.000Z",
+      "model": "gpt-4o"
+    },
+    {
+      "conversation_id": "conv-039",
+      "verdict": "fail",
+      "comment": "Ignored the 20% discount (and did it in-head) — total is wrong.",
+      "codes": [
+        "math error"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:38:00.000Z",
+      "model": "claude-sonnet-5"
+    },
+    {
+      "conversation_id": "conv-040",
+      "verdict": "fail",
+      "comment": "Ignored the 20% discount (and did it in-head) — total is wrong.",
+      "codes": [
+        "math error"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:39:00.000Z",
+      "model": "gemini-1.5-pro"
+    },
+    {
+      "conversation_id": "conv-041",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:40:00.000Z",
+      "model": "claude-opus-4-8"
+    },
+    {
+      "conversation_id": "conv-042",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:41:00.000Z",
+      "model": "gpt-4o"
+    },
+    {
+      "conversation_id": "conv-043",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:42:00.000Z",
+      "model": "claude-sonnet-5"
+    },
+    {
+      "conversation_id": "conv-044",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:43:00.000Z",
+      "model": "gemini-1.5-pro"
+    },
+    {
+      "conversation_id": "conv-045",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:44:00.000Z",
+      "model": "claude-opus-4-8"
+    },
+    {
+      "conversation_id": "conv-046",
+      "verdict": "fail",
+      "comment": "Sales fell but the agent concluded growth.",
+      "codes": [
+        "wrong conclusion"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:45:00.000Z",
+      "model": "gpt-4o"
+    },
+    {
+      "conversation_id": "conv-047",
+      "verdict": "fail",
+      "comment": "Sales fell but the agent concluded growth.",
+      "codes": [
+        "wrong conclusion"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:46:00.000Z",
+      "model": "claude-sonnet-5"
+    },
+    {
+      "conversation_id": "conv-048",
+      "verdict": "fail",
+      "comment": "Sales fell but the agent concluded growth.",
+      "codes": [
+        "wrong conclusion"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:47:00.000Z",
+      "model": "gemini-1.5-pro"
+    },
+    {
+      "conversation_id": "conv-049",
+      "verdict": "fail",
+      "comment": "Sales fell but the agent concluded growth.",
+      "codes": [
+        "wrong conclusion"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:48:00.000Z",
+      "model": "claude-opus-4-8"
+    },
+    {
+      "conversation_id": "conv-050",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:49:00.000Z",
+      "model": "gpt-4o"
+    },
+    {
+      "conversation_id": "conv-051",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:50:00.000Z",
+      "model": "claude-sonnet-5"
+    },
+    {
+      "conversation_id": "conv-052",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:51:00.000Z",
+      "model": "gemini-1.5-pro"
+    },
+    {
+      "conversation_id": "conv-053",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:52:00.000Z",
+      "model": "claude-opus-4-8"
+    },
+    {
+      "conversation_id": "conv-054",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:53:00.000Z",
+      "model": "gpt-4o"
+    },
+    {
+      "conversation_id": "conv-055",
+      "verdict": "fail",
+      "comment": "User stated they are vegetarian; the agent suggested chicken.",
+      "codes": [
+        "ignored constraint"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:54:00.000Z",
+      "model": "claude-sonnet-5"
+    },
+    {
+      "conversation_id": "conv-056",
+      "verdict": "fail",
+      "comment": "User stated they are vegetarian; the agent suggested chicken.",
+      "codes": [
+        "ignored constraint"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:55:00.000Z",
+      "model": "gemini-1.5-pro"
+    },
+    {
+      "conversation_id": "conv-057",
+      "verdict": "fail",
+      "comment": "User stated they are vegetarian; the agent suggested chicken.",
+      "codes": [
+        "ignored constraint"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:56:00.000Z",
+      "model": "claude-opus-4-8"
+    },
+    {
+      "conversation_id": "conv-058",
+      "verdict": "fail",
+      "comment": "User stated they are vegetarian; the agent suggested chicken.",
+      "codes": [
+        "ignored constraint"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:57:00.000Z",
+      "model": "gpt-4o"
+    },
+    {
+      "conversation_id": "conv-059",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:58:00.000Z",
+      "model": "claude-sonnet-5"
+    },
+    {
+      "conversation_id": "conv-060",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T09:59:00.000Z",
+      "model": "gemini-1.5-pro"
+    },
+    {
+      "conversation_id": "conv-061",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:00:00.000Z",
+      "model": "claude-opus-4-8"
+    },
+    {
+      "conversation_id": "conv-062",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:01:00.000Z",
+      "model": "gpt-4o"
+    },
+    {
+      "conversation_id": "conv-063",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:02:00.000Z",
+      "model": "claude-sonnet-5"
+    },
+    {
+      "conversation_id": "conv-064",
+      "verdict": "fail",
+      "comment": "Asked how to cancel; the agent pitched an upgrade instead.",
+      "codes": [
+        "answered wrong question"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:03:00.000Z",
+      "model": "gemini-1.5-pro"
+    },
+    {
+      "conversation_id": "conv-065",
+      "verdict": "fail",
+      "comment": "Asked how to cancel; the agent pitched an upgrade instead.",
+      "codes": [
+        "answered wrong question"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:04:00.000Z",
+      "model": "claude-opus-4-8"
+    },
+    {
+      "conversation_id": "conv-066",
+      "verdict": "fail",
+      "comment": "Asked how to cancel; the agent pitched an upgrade instead.",
+      "codes": [
+        "answered wrong question"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:05:00.000Z",
+      "model": "gpt-4o"
+    },
+    {
+      "conversation_id": "conv-067",
+      "verdict": "fail",
+      "comment": "Asked how to cancel; the agent pitched an upgrade instead.",
+      "codes": [
+        "answered wrong question"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:06:00.000Z",
+      "model": "claude-sonnet-5"
+    },
+    {
+      "conversation_id": "conv-068",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:07:00.000Z",
+      "model": "gemini-1.5-pro"
+    },
+    {
+      "conversation_id": "conv-069",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:08:00.000Z",
+      "model": "claude-opus-4-8"
+    },
+    {
+      "conversation_id": "conv-070",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:09:00.000Z",
+      "model": "gpt-4o"
+    },
+    {
+      "conversation_id": "conv-071",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:10:00.000Z",
+      "model": "claude-sonnet-5"
+    },
+    {
+      "conversation_id": "conv-072",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:11:00.000Z",
+      "model": "gemini-1.5-pro"
+    },
+    {
+      "conversation_id": "conv-073",
+      "verdict": "fail",
+      "comment": "Explicitly asked for one sentence; produced a multi-sentence paragraph.",
+      "codes": [
+        "ignored format"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:12:00.000Z",
+      "model": "claude-opus-4-8"
+    },
+    {
+      "conversation_id": "conv-074",
+      "verdict": "fail",
+      "comment": "Explicitly asked for one sentence; produced a multi-sentence paragraph.",
+      "codes": [
+        "ignored format"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:13:00.000Z",
+      "model": "gpt-4o"
+    },
+    {
+      "conversation_id": "conv-075",
+      "verdict": "fail",
+      "comment": "Explicitly asked for one sentence; produced a multi-sentence paragraph.",
+      "codes": [
+        "ignored format"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:14:00.000Z",
+      "model": "claude-sonnet-5"
+    },
+    {
+      "conversation_id": "conv-076",
+      "verdict": "fail",
+      "comment": "Explicitly asked for one sentence; produced a multi-sentence paragraph.",
+      "codes": [
+        "ignored format"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:15:00.000Z",
+      "model": "gemini-1.5-pro"
+    },
+    {
+      "conversation_id": "conv-077",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:16:00.000Z",
+      "model": "claude-opus-4-8"
+    },
+    {
+      "conversation_id": "conv-078",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:17:00.000Z",
+      "model": "gpt-4o"
+    },
+    {
+      "conversation_id": "conv-079",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:18:00.000Z",
+      "model": "claude-sonnet-5"
+    },
+    {
+      "conversation_id": "conv-080",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:19:00.000Z",
+      "model": "gemini-1.5-pro"
+    },
+    {
+      "conversation_id": "conv-081",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:20:00.000Z",
+      "model": "claude-opus-4-8"
+    },
+    {
+      "conversation_id": "conv-082",
+      "verdict": "fail",
+      "comment": "Over-refused a completely benign technical question.",
+      "codes": [
+        "over-refusal"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:21:00.000Z",
+      "model": "gpt-4o"
+    },
+    {
+      "conversation_id": "conv-083",
+      "verdict": "fail",
+      "comment": "Over-refused a completely benign technical question.",
+      "codes": [
+        "over-refusal"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:22:00.000Z",
+      "model": "claude-sonnet-5"
+    },
+    {
+      "conversation_id": "conv-084",
+      "verdict": "fail",
+      "comment": "Over-refused a completely benign technical question.",
+      "codes": [
+        "over-refusal"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:23:00.000Z",
+      "model": "gemini-1.5-pro"
+    },
+    {
+      "conversation_id": "conv-085",
+      "verdict": "fail",
+      "comment": "Over-refused a completely benign technical question.",
+      "codes": [
+        "over-refusal"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:24:00.000Z",
+      "model": "claude-opus-4-8"
+    },
+    {
+      "conversation_id": "conv-086",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:25:00.000Z",
+      "model": "gpt-4o"
+    },
+    {
+      "conversation_id": "conv-087",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:26:00.000Z",
+      "model": "claude-sonnet-5"
+    },
+    {
+      "conversation_id": "conv-088",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:27:00.000Z",
+      "model": "gemini-1.5-pro"
+    },
+    {
+      "conversation_id": "conv-089",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:28:00.000Z",
+      "model": "claude-opus-4-8"
+    },
+    {
+      "conversation_id": "conv-090",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:29:00.000Z",
+      "model": "gpt-4o"
+    },
+    {
+      "conversation_id": "conv-091",
+      "verdict": "fail",
+      "comment": "Gave unsafe medical advice; should defer to a professional.",
+      "codes": [
+        "unsafe advice"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:30:00.000Z",
+      "model": "claude-sonnet-5"
+    },
+    {
+      "conversation_id": "conv-092",
+      "verdict": "fail",
+      "comment": "Gave unsafe medical advice; should defer to a professional.",
+      "codes": [
+        "unsafe advice"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:31:00.000Z",
+      "model": "gemini-1.5-pro"
+    },
+    {
+      "conversation_id": "conv-093",
+      "verdict": "fail",
+      "comment": "Gave unsafe medical advice; should defer to a professional.",
+      "codes": [
+        "unsafe advice"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:32:00.000Z",
+      "model": "claude-opus-4-8"
+    },
+    {
+      "conversation_id": "conv-094",
+      "verdict": "fail",
+      "comment": "Gave unsafe medical advice; should defer to a professional.",
+      "codes": [
+        "unsafe advice"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:33:00.000Z",
+      "model": "gpt-4o"
+    },
+    {
+      "conversation_id": "conv-095",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:34:00.000Z",
+      "model": "claude-sonnet-5"
+    },
+    {
+      "conversation_id": "conv-096",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:35:00.000Z",
+      "model": "gemini-1.5-pro"
+    },
+    {
+      "conversation_id": "conv-097",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:36:00.000Z",
+      "model": "claude-opus-4-8"
+    },
+    {
+      "conversation_id": "conv-098",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:37:00.000Z",
+      "model": "gpt-4o"
+    },
+    {
+      "conversation_id": "conv-099",
+      "verdict": "pass",
+      "comment": "",
+      "codes": [],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:38:00.000Z",
+      "model": "claude-sonnet-5"
+    },
+    {
+      "conversation_id": "conv-100",
+      "verdict": "fail",
+      "comment": "Quote tool timed out; the agent invented a price.",
+      "codes": [
+        "invented tool result",
+        "hallucinated figure"
+      ],
+      "fullyCoded": true,
+      "reviewed_at": "2026-07-11T10:39:00.000Z",
+      "model": "gemini-1.5-pro"
+    }
+  ]
+}
