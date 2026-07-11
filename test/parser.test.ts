@@ -59,6 +59,24 @@ describe("format-agnostic parser", () => {
     expect(missingOutput).toHaveLength(0);
   });
 
+  it("parses the new OTel GenAI convention (gen_ai.input.messages with typed parts)", () => {
+    const r = load("fixtures/genai-v2-messages.json");
+    expect(r.conversations).toHaveLength(1);
+    const c = r.conversations[0];
+    expect(c.meta.model).toBe("gpt-4o");
+    // user text extracted from a text part
+    expect(c.steps.some((s) => s.role === "user" && /Weather in Paris/.test(s.text!))).toBe(true);
+    // tool_call part -> a tool step, tool_call_response part fills its output
+    const tool = toolSteps(c).find((s) => s.toolName === "get_weather");
+    expect(tool).toBeTruthy();
+    expect(JSON.stringify(tool!.toolInput)).toMatch(/Paris/);
+    expect(JSON.stringify(tool!.toolOutput)).toMatch(/rainy/);
+    // final assistant text from output messages
+    expect(c.steps.some((s) => s.role === "assistant" && /rainy and 57/.test(s.text!))).toBe(true);
+    // history repeated across spans is de-duplicated
+    expect(c.steps.filter((s) => s.role === "user")).toHaveLength(1);
+  });
+
   it("parseText accepts NDJSON", () => {
     const data = parseText('{"a":1}\n{"a":2}\n');
     expect(Array.isArray(data)).toBe(true);

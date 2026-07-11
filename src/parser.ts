@@ -153,6 +153,10 @@ function getStartNs(span) {
    ATTRIBUTE KEY DICTIONARIES (agnostic probing)
    ============================================================ */
 const MSG_ARRAY_KEYS = [
+  // New OpenTelemetry GenAI convention (used by AI SDK v7): role + typed `parts`.
+  ["gen_ai.input.messages", "input"],
+  ["gen_ai.output.messages", "output"],
+  // OpenInference and older / other conventions.
   ["llm.input_messages", "input"],
   ["llm.output_messages", "output"],
   ["gen_ai.prompt", "input"],
@@ -185,6 +189,30 @@ function normalizeMessage(m, fallbackRole) {
   const msg = (m.message && typeof m.message === "object") ? m.message : m;
   let role = msg.role || msg.author || msg.speaker || msg.from || msg.sender || fallbackRole || "assistant";
   role = ROLE_ALIASES[String(role).toLowerCase()] || role;
+
+  // New OpenTelemetry GenAI convention (AI SDK v7): a `parts` array of typed parts,
+  // e.g. {type:"text",content}, {type:"tool_call",name,arguments,id},
+  // {type:"tool_call_response",response,id}.
+  if (Array.isArray(msg.parts)) {
+    const texts = [];
+    const calls = [];
+    for (const p of msg.parts) {
+      if (!p || typeof p !== "object") { if (p != null) texts.push(String(p)); continue; }
+      const type = String(p.type || "").toLowerCase();
+      const fn = (p.function && typeof p.function === "object") ? p.function : null;
+      if (type === "tool_call" || type === "function_call") {
+        calls.push({ name: p.name || (fn && fn.name) || "tool", input: p.arguments ?? p.args ?? (fn && (fn.arguments ?? fn.parameters)) ?? "" });
+      } else if (type === "tool_call_response" || type === "tool_response" || type === "tool_result") {
+        texts.push(asText(p.response ?? p.result ?? p.content));
+      } else if (p.content != null) {
+        texts.push(asText(p.content));
+      } else if (p.text != null) {
+        texts.push(asText(p.text));
+      }
+    }
+    return { role, content: texts.filter(Boolean).join("\n"), toolCalls: calls, raw: msg };
+  }
+
   let content = msg.content ?? msg.text ?? msg.value ?? msg.utterance ?? msg.body ??
     (typeof msg.message === "string" ? msg.message : "") ?? "";
   content = asText(content);

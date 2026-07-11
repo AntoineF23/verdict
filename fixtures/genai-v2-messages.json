@@ -1,0 +1,26 @@
+[
+  {
+    "trace_id": "trace-genai-v2",
+    "span_id": "s1",
+    "name": "chat gpt-4o",
+    "startTimeUnixNano": "1000",
+    "endTimeUnixNano": "2000",
+    "attributes": {
+      "gen_ai.request.model": "gpt-4o",
+      "gen_ai.input.messages": "[{\"role\":\"user\",\"parts\":[{\"type\":\"text\",\"content\":\"Weather in Paris?\"}]}]",
+      "gen_ai.output.messages": "[{\"role\":\"assistant\",\"parts\":[{\"type\":\"tool_call\",\"id\":\"call_1\",\"name\":\"get_weather\",\"arguments\":{\"location\":\"Paris\"}}],\"finish_reason\":\"tool_call\"}]"
+    }
+  },
+  {
+    "trace_id": "trace-genai-v2",
+    "span_id": "s2",
+    "name": "chat gpt-4o",
+    "startTimeUnixNano": "2200",
+    "endTimeUnixNano": "3000",
+    "attributes": {
+      "gen_ai.request.model": "gpt-4o",
+      "gen_ai.input.messages": "[{\"role\":\"user\",\"parts\":[{\"type\":\"text\",\"content\":\"Weather in Paris?\"}]},{\"role\":\"assistant\",\"parts\":[{\"type\":\"tool_call\",\"id\":\"call_1\",\"name\":\"get_weather\",\"arguments\":{\"location\":\"Paris\"}}]},{\"role\":\"tool\",\"parts\":[{\"type\":\"tool_call_response\",\"id\":\"call_1\",\"response\":\"rainy, 57F\"}]}]",
+      "gen_ai.output.messages": "[{\"role\":\"assistant\",\"parts\":[{\"type\":\"text\",\"content\":\"It's rainy and 57F in Paris right now.\"}],\"finish_reason\":\"stop\"}]"
+    }
+  }
+]

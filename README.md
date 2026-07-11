@@ -257,7 +257,9 @@ Regenerate these with `npm run gen:testfiles` and `node scripts/generate-demo.mj
 
 OTLP (resourceSpans), OpenInference and gen_ai and OpenLLMetry spans, Langfuse exports, plain
 `[{role, content}]` (with tool_calls), arrays of conversations, NDJSON, and a fallback that renders
-any other JSON as readable, gradable records. A banner shows the detected format after loading, and
+any other JSON as readable, gradable records. This includes the current OpenTelemetry GenAI
+convention (`gen_ai.input.messages` and `gen_ai.output.messages` with typed `parts`, as emitted by
+the Vercel AI SDK v7) as well as the older `gen_ai.prompt` and `gen_ai.completion` style. A banner shows the detected format after loading, and
 every step has a "show raw" toggle. If a field is missed, extend the attribute key dictionaries at
 the top of `src/parser.ts`.
 
