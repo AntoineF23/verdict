@@ -1,6 +1,6 @@
-# Contributing to Verdict
+# Contributing to Vasari
 
-Thanks for helping improve Verdict. Issues and pull requests are welcome, whether it is a bug fix,
+Thanks for helping improve Vasari. Issues and pull requests are welcome, whether it is a bug fix,
 a new trace format, a better judge prompt, docs, or design.
 
 ## Getting started
@@ -57,6 +57,6 @@ the fastest path to a fix.
 
 ## Design and philosophy
 
-Verdict follows the evaluation approach taught by Hamel Husain: look at your data, do error
+Vasari follows the evaluation approach taught by Hamel Husain: look at your data, do error
 analysis, and only trust an LLM judge once it agrees with human reviewers. Contributions that make
 that loop faster or more honest are especially welcome.

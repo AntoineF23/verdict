@@ -64,7 +64,7 @@ function fixHint(detail: string, status: number): string {
     return "How to fix: adjust \"Max output tokens\" in Settings, then run again.";
   }
   if (t.includes("temperature")) {
-    return "How to fix: this model does not accept a custom temperature. Verdict already omits it by default, so make sure you are on the latest version.";
+    return "How to fix: this model does not accept a custom temperature. Vasari already omits it by default, so make sure you are on the latest version.";
   }
   if (status === 401 || status === 403 || t.includes("api key") || t.includes("authentication") || t.includes("x-api-key") || (t.includes("invalid") && t.includes("key"))) {
     return "How to fix: check the API key (and base URL, for a custom provider) in Settings.";

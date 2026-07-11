@@ -1,8 +1,8 @@
 blank_issues_enabled: true
 contact_links:
   - name: Try the live demo
-    url: https://antoinef23.github.io/verdict/
-    about: Run Verdict in your browser before filing an issue.
+    url: https://antoinef23.github.io/vasari/
+    about: Run Vasari in your browser before filing an issue.
   - name: AI evals crash course (Hamel Husain)
     url: https://creatoreconomy.so/p/ai-evaluations-crash-course-in-50-minutes-hamel-husain
-    about: The evaluation methodology Verdict is built around.
+    about: The evaluation methodology Vasari is built around.

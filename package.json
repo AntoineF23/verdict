@@ -1,7 +1,7 @@
 {
-  "name": "verdict",
+  "name": "vasari",
   "version": "0.1.0",
-  "description": "Verdict — local-first tool for human Pass/Fail + comment feedback on AI agent traces (OpenTelemetry / OpenInference / Langfuse / plain conversations), with grounded-theory open → axial error coding and validated LLM-as-judge export. Offline, no backend.",
+  "description": "Vasari is a local, open source tool for evaluating AI features. Review agent and chatbot traces (OpenTelemetry, OpenInference, Langfuse, plain conversations), run error analysis with open and axial coding, and validate an LLM as a judge against human labels. Offline, no backend.",
   "type": "module",
   "license": "MIT",
   "scripts": {

@@ -1,11 +1,11 @@
-# Verdict
+# Vasari
 
-[![CI](https://github.com/AntoineF23/verdict/actions/workflows/ci.yml/badge.svg)](https://github.com/AntoineF23/verdict/actions/workflows/ci.yml)
-[![Live demo](https://img.shields.io/badge/live%20demo-online-3E5641)](https://antoinef23.github.io/verdict/)
+[![CI](https://github.com/AntoineF23/vasari/actions/workflows/ci.yml/badge.svg)](https://github.com/AntoineF23/vasari/actions/workflows/ci.yml)
+[![Live demo](https://img.shields.io/badge/live%20demo-online-3E5641)](https://antoinef23.github.io/vasari/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-004D61)](LICENSE)
 [![Built with Vite + TypeScript](https://img.shields.io/badge/built%20with-Vite%20%2B%20TypeScript-822659)](https://vitejs.dev/)
 
-**Verdict is a local, open source tool for evaluating AI features.** Load the traces from any AI
+**Vasari is a local, open source tool for evaluating AI features.** Load the traces from any AI
 agent, chatbot, RAG assistant, or LLM feature. Review each conversation and mark it **Pass or
 Fail** with a comment. Discover *what kinds* of failures happen with grounded theory error
 analysis. Then build and **validate an LLM as a judge** against your human labels, and export that
@@ -14,24 +14,24 @@ judge to monitor quality in production.
 Everything runs in your browser. No backend, no accounts, and no data leaves your machine unless
 you choose to call an LLM API. Ship it as a single web page that works offline.
 
-**Live demo:** https://antoinef23.github.io/verdict/
+**Live demo:** https://antoinef23.github.io/vasari/
 
 > Why this exists: shipping an AI feature and eyeballing a few outputs (the "vibe check") does not
 > tell you if it is good, how it fails, or whether it is improving. Real evaluation is a loop. You
 > look at your data, label it, find the failure modes, measure them, then automate the measurement
-> with a judge you have proven trustworthy. Verdict is a purpose built tool for running that loop.
+> with a judge you have proven trustworthy. Vasari is a purpose built tool for running that loop.
 
 ## Credit and inspiration
 
 This tool is heavily inspired by the AI evaluation methodology of **Hamel Husain**. The core ideas
 come straight from his teaching: look at your data, run error analysis with open and axial coding,
 and only trust an LLM judge once it has been shown to agree with human reviewers (measured with
-true positive and true negative rates). If you want the theory behind Verdict, watch:
+true positive and true negative rates). If you want the theory behind Vasari, watch:
 
 **AI Evals Crash Course in 50 minutes (Hamel Husain):**
 https://creatoreconomy.so/p/ai-evaluations-crash-course-in-50-minutes-hamel-husain
 
-Verdict is an independent implementation of these ideas. It is not affiliated with or endorsed by
+Vasari is an independent implementation of these ideas. It is not affiliated with or endorsed by
 Hamel Husain.
 
 ## The evaluation loop
@@ -44,10 +44,10 @@ Hamel Husain.
 6. **Validate.** Prove the judge agrees with humans (confusion matrix, TPR, TNR, Cohen's kappa).
 7. **Ship.** Export the trusted judge and run it on production traffic no human has time to read.
 
-Steps 1 to 4 are human work, and Verdict makes them fast. Steps 5 to 7 let you scale that judgment
+Steps 1 to 4 are human work, and Vasari makes them fast. Steps 5 to 7 let you scale that judgment
 to conversations no human will read, but only after the judge has proven it matches your reviewers.
 
-## What Verdict does
+## What Vasari does
 
 * **Reads traces from anything.** Format agnostic ingest: OpenTelemetry (OTLP) exports,
   OpenInference and gen_ai and OpenLLMetry spans, Langfuse exports, plain `[{role, content}]`
@@ -87,7 +87,7 @@ Try it right away with the bundled sample data (see [Sample data](#sample-data))
 ## How the LLM judge is evaluated (the important part)
 
 The whole point of a judge is to replace a human reviewer on data no human will read. That is only
-safe if you can **prove the judge labels almost as well as a human**. Verdict does this the way any
+safe if you can **prove the judge labels almost as well as a human**. Vasari does this the way any
 classifier is evaluated: it treats your human labels as ground truth, has the judge label the same
 conversations, and compares the two.
 
@@ -148,9 +148,9 @@ near perfect. Aim for high kappa together with high TPR.
 ### Why a train and test split
 
 If you tune the judge prompt while looking at the same conversations you score on, you overfit and
-the numbers lie. Verdict splits your labeled set into a train part and a held out test part
+the numbers lie. Vasari splits your labeled set into a train part and a held out test part
 (stratified so both keep the same balance of positives). Tune on train, and trust the **test**
-numbers. Verdict reports both and clears a version's metrics whenever you edit its prompt or model,
+numbers. Vasari reports both and clears a version's metrics whenever you edit its prompt or model,
 so stale numbers never mislead you.
 
 ### The decision
@@ -168,10 +168,10 @@ feature's traces.
 
 **0. Get some traces.** An AI feature (agent, chatbot, RAG assistant, classifier) produces
 conversations. Your engineers can usually export these as JSON from your observability stack
-(OpenTelemetry, Langfuse, Arize Phoenix, LangSmith, or a plain log). Verdict reads all of these. No
+(OpenTelemetry, Langfuse, Arize Phoenix, LangSmith, or a plain log). Vasari reads all of these. No
 export yet? Use the demo files in `test-files/`.
 
-**1. Look at your data.** This is the most important step. Open Verdict, click **Load export**, and
+**1. Look at your data.** This is the most important step. Open Vasari, click **Load export**, and
 pick `demo-100-conversations.json`. Read a few conversations end to end. You will start noticing
 patterns immediately: the agent makes things up, ignores instructions, mishandles tools.
 
@@ -188,7 +188,7 @@ stays consistent. Tick **fully coded** once you have captured every problem in t
 **4. Axial code into a failure taxonomy.** Click **Analyze fails**. You will see every distinct code
 and its frequency. Cluster them into higher level failure categories. With an API key, click **Run
 with API**. Without a key, click **Copy prompt**, paste it into ChatGPT or Claude, and paste the
-JSON back. Verdict shows the categories with counts. Click **filter queue** on a category to review
+JSON back. Vasari shows the categories with counts. Click **filter queue** on a category to review
 just those failures.
 
 **5. Build and validate a judge per category.** Click **Judges**. There is one tab per failure
@@ -279,7 +279,7 @@ the top of `src/parser.ts`.
   OpenAI, or any OpenAI compatible base URL including a gateway or local model), a model, a key, and
   a max output tokens value.
 
-  **Is your key safe on the hosted demo?** Yes. Verdict has no backend. Your key is held in your
+  **Is your key safe on the hosted demo?** Yes. Vasari has no backend. Your key is held in your
   browser and is sent only to the provider you configure, directly over HTTPS. Nothing is collected
   by this project or any server we run. By default the key is kept for the current session only. If
   you tick "Remember the key in this browser" it is saved to this origin's local storage so you do

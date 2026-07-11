@@ -9,7 +9,7 @@ labels: enhancement
 What are you trying to do that is hard or impossible today?
 
 **Proposed solution**
-What would you like Verdict to do?
+What would you like Vasari to do?
 
 **Who benefits**
 For example: reviewers labeling data, PMs reading metrics, engineers exporting judges.
