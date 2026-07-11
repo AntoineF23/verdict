@@ -263,6 +263,15 @@
   input[type=checkbox]:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
   .scan-box { border: 1px solid var(--border); border-radius: var(--radius); padding: 8px 10px; margin-top: 8px; max-height: 240px; overflow: auto; }
   .scan-box .chk { margin: 2px 0; }
+  /* In-modal status / error message (wraps, unlike the header banner) */
+  .msg {
+    font-size: 13px; line-height: 1.5; padding: 9px 11px; border-radius: var(--radius);
+    background: var(--panel-2); border: 1px solid var(--border); color: var(--text);
+    white-space: pre-wrap; word-break: break-word;
+  }
+  .msg.ok { border-color: color-mix(in srgb, var(--pass) 50%, transparent); }
+  .msg.warn { border-color: color-mix(in srgb, var(--fail) 60%, transparent); }
+
   /* Judges: top bar, help, tabs */
   .judges-top { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 10px; font-size: 13px; }
   .judges-top .jspacer { flex: 1; }

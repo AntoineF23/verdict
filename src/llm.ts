@@ -54,6 +54,30 @@ function extractErrorMessage(body: unknown): string | null {
   return null;
 }
 
+/** Turn a raw provider error into a plain-language "here is how to fix it" hint. */
+function fixHint(detail: string, status: number): string {
+  const t = detail.toLowerCase();
+  if (t.includes("max_tokens") && (t.includes("thinking") || t.includes("budget"))) {
+    return "How to fix: this model reserves part of its output for internal reasoning, so it needs a bigger output budget than you set. Open Settings and raise \"Max output tokens\" (try 16000 or higher), then run again.";
+  }
+  if (t.includes("max_tokens")) {
+    return "How to fix: adjust \"Max output tokens\" in Settings, then run again.";
+  }
+  if (t.includes("temperature")) {
+    return "How to fix: this model does not accept a custom temperature. Verdict already omits it by default, so make sure you are on the latest version.";
+  }
+  if (status === 401 || status === 403 || t.includes("api key") || t.includes("authentication") || t.includes("x-api-key") || (t.includes("invalid") && t.includes("key"))) {
+    return "How to fix: check the API key (and base URL, for a custom provider) in Settings.";
+  }
+  if (status === 404 || t.includes("model")) {
+    return "How to fix: check the model name in Settings. It may not exist on this provider or gateway.";
+  }
+  if (status === 429 || t.includes("rate limit")) {
+    return "How to fix: you have hit a rate or quota limit. Wait a moment, or lower the load, then run again.";
+  }
+  return "";
+}
+
 /** Build a helpful Error for a non-2xx HTTP response, parsing the body defensively. */
 async function responseError(res: Response): Promise<Error> {
   let detail: string | null = null;
@@ -69,8 +93,10 @@ async function responseError(res: Response): Promise<Error> {
   } catch {
     // ignore body read failures
   }
-  const base = `LLM request failed with HTTP ${res.status}`;
-  return new Error(detail ? `${base}: ${detail}` : base);
+  const base = `Request failed (HTTP ${res.status})`;
+  const msg = detail ? `${base}: ${detail}` : base;
+  const hint = fixHint(detail || "", res.status);
+  return new Error(hint ? `${msg}\n\n${hint}` : msg);
 }
 
 /** Concatenate all text blocks from an Anthropic `content` array. */
@@ -98,7 +124,7 @@ export async function llmComplete(
   }
 
   // Default is generous so it clears a thinking model's budget_tokens; tunable in Settings.
-  const maxTokens = req.maxTokens ?? cfg.maxTokens ?? 4096;
+  const maxTokens = req.maxTokens ?? cfg.maxTokens ?? 16000;
   // Only forward `temperature` when the caller explicitly set one. Some models
   // (e.g. thinking-enabled Claude behind a gateway) reject any value other than 1,
   // so omitting it lets the provider apply its own valid default.

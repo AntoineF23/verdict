@@ -61,7 +61,7 @@ describe("llmComplete — anthropic", () => {
     expect(body.model).toBe("claude-opus-4-8");
     expect(body.system).toBe("be terse");
     expect(body.messages).toEqual([{ role: "user", content: "hi" }]);
-    expect(body.max_tokens).toBe(4096);
+    expect(body.max_tokens).toBe(16000);
     // temperature is omitted unless explicitly set (thinking-enabled models reject non-1 values)
     expect("temperature" in body).toBe(false);
   });
@@ -142,6 +142,12 @@ describe("llmComplete — errors", () => {
 
     await expect(llmComplete(cfg, { prompt: "p" }, fetchImpl)).rejects.toThrow(/401/);
     await expect(llmComplete(cfg, { prompt: "p" }, fetchImpl)).rejects.toThrow(/invalid api key/);
+  });
+
+  it("adds an actionable hint for a thinking-budget max_tokens error", async () => {
+    const cfg: LlmConfig = { provider: "custom", model: "claude", apiKey: "k", baseUrl: "https://gw/v1" };
+    const fetchImpl = errorFetch(400, { error: { message: "`max_tokens` must be greater than `thinking.budget_tokens`" } });
+    await expect(llmComplete(cfg, { prompt: "p" }, fetchImpl)).rejects.toThrow(/Max output tokens/);
   });
 
   it("rethrows network failures with context", async () => {

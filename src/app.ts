@@ -488,7 +488,7 @@ function applyAxial(text) {
 function setAnalysisMsg(text, cls) {
   const m = document.getElementById("analysisMsg");
   if (!m) return;
-  m.textContent = text; m.className = "banner " + (cls || ""); m.style.display = "inline-block";
+  m.textContent = text; m.className = "msg " + (cls || ""); m.style.display = "block";
 }
 function copyText(text, btn) {
   const done = () => { if (btn) { const t = btn.textContent; btn.textContent = "Copied!"; setTimeout(() => btn.textContent = t, 1200); } };
@@ -507,7 +507,7 @@ function renderAnalysis() {
   const stats = codeStats();
   const nFail = failConvs().length;
   const coded = failConvs().filter(c => getCodes(c.id).length).length;
-  let html = `<div id="analysisMsg" class="banner" style="display:none;margin-bottom:10px"></div>`;
+  let html = `<div id="analysisMsg" class="msg" style="display:none;margin-bottom:10px"></div>`;
   html += `<p style="margin-top:0;color:var(--muted);font-size:13px">${nFail} fail(s) · ${coded} coded · ${nFail - coded} uncoded · ${stats.length} distinct open code(s)</p>`;
 
   if (!stats.length) {
@@ -607,8 +607,8 @@ function renderSettings() {
   html += `<div class="form-row"><label>API key</label><input type="password" id="setKey" value="${esc(d.llm.apiKey || "")}" placeholder="paste your key" autocomplete="off" /></div>`;
   html += `<label class="chk"><input type="checkbox" id="setRemember" ${d.rememberKey ? "checked" : ""}/> Remember the key in this browser (leave off on shared computers)</label>`;
   html += `<p style="font-size:12px;color:var(--muted);margin:4px 0 8px">Your key stays in your browser and is sent only to the provider you choose. With this off, it is kept for this session only and never saved to disk.</p>`;
-  html += `<div class="form-row"><label>Max output tokens</label><input type="text" id="setMaxTokens" value="${d.llm.maxTokens ?? ""}" placeholder="4096" /></div>`;
-  html += `<p style="font-size:12px;color:var(--muted);margin:-2px 0 8px">Raise this if a thinking or gateway model reports that max_tokens must exceed its thinking budget.</p>`;
+  html += `<div class="form-row"><label>Max output tokens</label><input type="text" id="setMaxTokens" value="${d.llm.maxTokens ?? ""}" placeholder="16000" /></div>`;
+  html += `<p style="font-size:12px;color:var(--muted);margin:-2px 0 8px">Default is 16000. Raise it further if a thinking or gateway model reports that max_tokens must exceed its thinking budget.</p>`;
 
   html += `<h3>Anonymization</h3>`;
   html += `<label class="chk"><input type="checkbox" id="setAnonEnabled" ${d.anon.enabled ? "checked" : ""} /> Turn on anonymization. Personal data (names, emails, phone numbers, and more) is replaced with placeholders everywhere it appears: the conversation timeline, your exports, and anything sent to an LLM.</label>`;
@@ -721,7 +721,7 @@ function toggleAnon() {
    ============================================================ */
 function pct(x) { return (100 * (x || 0)).toFixed(0) + "%"; }
 function slug(s) { return String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""); }
-function judgeMsg(text, cls) { const m = document.getElementById("judgeMsg"); if (m) { m.textContent = text; m.className = "banner " + (cls || ""); m.style.display = "inline-block"; } }
+function judgeMsg(text, cls) { const m = document.getElementById("judgeMsg"); if (m) { m.textContent = text; m.className = "msg " + (cls || ""); m.style.display = "block"; } }
 
 function labeledConvs() {
   let list = state.conversations.filter(c => fb(c.id).verdict); // reviewed only
@@ -776,7 +776,7 @@ function confusionHtml(m, label) {
 
 function renderJudges() {
   const body = document.getElementById("judgesBody");
-  let html = `<div id="judgeMsg" class="banner" style="display:none;margin-bottom:10px"></div>`;
+  let html = `<div id="judgeMsg" class="msg" style="display:none;margin-bottom:10px"></div>`;
   if (!state.axial || !state.axial.categories.length) {
     body.innerHTML = html + `<p>No axial categories yet. Use <b>Analyze fails</b> to build the taxonomy first — you get one judge per category here.</p>`;
     return;
